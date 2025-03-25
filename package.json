@@ -1,0 +1,23 @@
+{
+  "name": "dizplaipolling",
+  "version": "1.0.0",
+  "description": "Web Application for polling - Developed as interview task for Dizplai Grad role.",
+  "homepage": "https://github.com/BradJayM/DizplaiPolling#readme",
+  "bugs": {
+    "url": "https://github.com/BradJayM/DizplaiPolling/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BradJayM/DizplaiPolling.git"
+  },
+  "license": "ISC",
+  "author": "Brad Jay Millington",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
