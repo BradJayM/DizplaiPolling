@@ -1,6 +1,8 @@
 const express = require('express'); //Imports Express 
 const app = express();  //Initialised instance of express applciation
 const port = 3000;
+const cors = require("cors");
+app.use(cors());
 
 app.use(express.json());
 
