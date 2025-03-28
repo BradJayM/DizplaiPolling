@@ -1,6 +1,5 @@
 let addVoteUrl = "http://localhost:3000/vote";
 let getPollUrl = "http://localhost:3000/polls/"
-let getResultsUrl = "http://localhost:3000/vote/"
 let pollChoice = "1";
 
 window.onload = async () => {
@@ -14,27 +13,9 @@ window.onload = async () => {
             "optionId" : form.elements["castVote"].value
         };
         await sendVote(addVoteUrl, data);
-        await getResults(getResultsUrl+pollChoice);
+        window.location.href = "results.html";
     });
 };
-
-
-
-async function getResults(url){
-    try{
-        const response = await fetch(url, {
-            method : "get",
-            headers: {
-                "accept" : "application/json",
-            },
-        });
-        const data = await response.json();
-        alert("response got");
-    } catch(error){
-        console.error("Error fetching results", error);
-    }
-}
-
 
 async function sendVote(url, data){
     try{
@@ -49,14 +30,11 @@ async function sendVote(url, data){
         const result = await response.json();
         console.log("success: ", result);
         alert("Vote Good");
-        return true;
     } catch (error) {
         console.error("Error: ", error);
         alert("Error submitting vote.");
-        return false;
     }
 }
-
 
 async function getPoll(url){
     try{
