@@ -5,14 +5,14 @@
         <script src="scripts/script.js"></script>
     </head>
     <body>
-        <h1>This is the poll page</h1>
+        <h1 id="pollQuestion">This is the poll page</h1>
         <form id="castVote">
             <input type="radio" id="option1" name="castVote" value="1">
-            <label for="option1">option1</label>
+            <label id= "label1" for="option1">pollOptions[0]</label>
             <input type="radio" id="option2" name="castVote" value="2">
-            <label for="option1">option2</label>
+            <label id= "label2" for="option1">option2</label>
             <input type="radio" id="option3" name="castVote" value="3">
-            <label for="option1">option3</label>
+            <label id="label3" for="option1">option3</label>
             <button type="submit" id="submitVote">Submit</button>
         </form>
     </body>

@@ -28,6 +28,15 @@ app.get("/polls", (req, res) => {
     res.json(polls);
 });
 
+app.get("/polls/:pollId", (req, res) => {
+    //const pollId = req.params.pollId;
+    const pollId = 1;
+    const poll = polls.find((p) => p.pollId == pollId);
+    if(!poll) return res.status(404).json({error: "poll not found"});
+
+    res.json({poll});
+})
+
 //Posts a vote
 app.post("/vote", (req, res) => {
     const { pollId, optionId } = req.body;
