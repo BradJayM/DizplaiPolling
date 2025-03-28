@@ -1,57 +1,75 @@
 let addVoteUrl = "http://localhost:3000/vote";
 let getPollUrl = "http://localhost:3000/polls/"
+let getResultsUrl = "http://localhost:3000/vote/"
 let pollChoice = "1";
 
-window.onload = () => {
-    getPoll(getPollUrl+pollChoice)
+window.onload = async () => {
+    await getPoll(getPollUrl+pollChoice)
 
-    document.getElementById("submitVote").addEventListener("click", (e) => {
-        e.preventDefault();
+    document.getElementById("submitVote").addEventListener("click", async (e) => {
+        e.preventDefault()
         var form = document.getElementById("castVote");
         const data = {
             "pollId" : "1",
             "optionId" : form.elements["castVote"].value
         };
-        sendVote(addVoteUrl, data);
+        await sendVote(addVoteUrl, data);
+        await getResults(getResultsUrl+pollChoice);
     });
 };
 
-function sendVote(url, data){
-    fetch(url, {
-        method: "post",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        console.log("Success: ", result);
-        alert("Vote good");
-    })
-    .catch(error => {
-        console.error("Error:", error);
+
+
+async function getResults(url){
+    try{
+        const response = await fetch(url, {
+            method : "get",
+            headers: {
+                "accept" : "application/json",
+            },
+        });
+        const data = await response.json();
+        alert("response got");
+    } catch(error){
+        console.error("Error fetching results", error);
+    }
+}
+
+
+async function sendVote(url, data){
+    try{
+        const response = await fetch(url, {
+            method: "post",
+            headers: {
+                "content-type" : "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        console.log("success: ", result);
+        alert("Vote Good");
+        return true;
+    } catch (error) {
+        console.error("Error: ", error);
         alert("Error submitting vote.");
-    });
+        return false;
+    }
+}
 
-};
 
-
-//NEED TO ADD MORE FAILIURE OPTIONS TO THIS GETPOLL()   
-function getPoll(url){
-    fetch(url, {
-        method: "get",
-        headers: {
-            "accept" : "application/json",
-        },
-    })
-    .then (response => response.json())
-    .then (data => {
-        
-        let pollQuestion = null;
+async function getPoll(url){
+    try{
+        const response = await fetch(url,{
+            method : "GET",
+            headers : {
+                "accept" : "application/json",
+            },
+        })
+        const data = await response.json();
+        let pollQuestions = null;
         let pollOptions = [];
 
-        
         pollQuestion = data.poll.question;
         pollOptions.push(data.poll.options[0].optionText);
         pollOptions.push(data.poll.options[1].optionText);
@@ -63,6 +81,8 @@ function getPoll(url){
         document.getElementById("label1").innerHTML = pollOptions[0];
         document.getElementById("label2").innerHTML = pollOptions[1];
         document.getElementById("label3").innerHTML = pollOptions[2];
-    })
-    .catch (error => console.error(error));
-};
+
+    } catch(error){
+        console.error("Error fetching results", error);
+    }
+}
