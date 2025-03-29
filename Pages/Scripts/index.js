@@ -7,10 +7,16 @@ window.onload = async () => {
 
     document.getElementById("submitVote").addEventListener("click", async (e) => {
         e.preventDefault()
-        var form = document.getElementById("castVote");
+        
+        const selectedOption = document.querySelector('input[name="radioVote"]:checked');
+        if (!selectedOption) {
+            alert("Please select an option before submitting.");
+            return;
+        }
+
         const data = {
             "pollId" : "1",
-            "optionId" : form.elements["castVote"].value
+            "optionId" : selectedOption.value
         };
         await sendVote(addVoteUrl, data);
         window.location.href = "results.html";
@@ -56,9 +62,9 @@ async function getPoll(url){
         //console.log(pollOptions);
 
         document.getElementById("pollQuestion").innerHTML = pollQuestion;
-        document.getElementById("label1").innerHTML = pollOptions[0];
-        document.getElementById("label2").innerHTML = pollOptions[1];
-        document.getElementById("label3").innerHTML = pollOptions[2];
+        document.getElementById("option1Label").innerHTML = pollOptions[0];
+        document.getElementById("option2Label").innerHTML = pollOptions[1];
+        document.getElementById("option3Label").innerHTML = pollOptions[2];
 
     } catch(error){
         console.error("Error fetching results", error);

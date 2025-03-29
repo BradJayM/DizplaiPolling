@@ -1,0 +1,63 @@
+html{
+    background-color: grey;
+    
+}
+.middle {
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers items horizontally */
+    gap: 15px;
+}
+
+form {
+    width: 100%;
+}
+.middle label{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+.middle input[type="radio"] {
+    display: none; /* REMOVES THE LITTLE CHECK BOX */
+}
+
+.middle input[type="radio"]:checked + .box {
+    background-color: teal; /* COLOUR OF THE SELECTED OPTION BOX */
+}
+
+.middle input[type="radio"]:checked + .box span {
+    color: white; /* COLOUR OF TEXT IN SELECTED OPTION BOX */
+}
+
+.box {
+    border-radius:15px;
+    width: 90%;
+    max-width: 500px;
+    height: 100px;
+    background-color: white;
+    transition: all 250ms ease;
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    font-weight: 900;
+    min-width: 150px;
+}
+
+.box:active {
+    transform: translateY(10px);
+}
+
+.box span {
+    position: absolute;
+    font-size: large;
+    transition: all 30ms ease;
+    color: teal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
