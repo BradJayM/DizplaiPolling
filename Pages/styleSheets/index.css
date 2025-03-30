@@ -1,6 +1,13 @@
 html{
     background-color: grey;
+    background-image: url("pollBackground.jpg");
+    background-size: cover;
     
+}
+.top {
+    display: flex;
+    justify-content: center;
+    color: white;
 }
 .middle {
     min-height: 300px;
@@ -27,7 +34,7 @@ form {
 }
 
 .middle input[type="radio"]:checked + .box {
-    background-color: teal; /* COLOUR OF THE SELECTED OPTION BOX */
+    background-color: purple; /* COLOUR OF THE SELECTED OPTION BOX */
 }
 
 .middle input[type="radio"]:checked + .box span {
@@ -36,16 +43,24 @@ form {
 
 .box {
     border-radius:15px;
+    border: solid white;
     width: 90%;
     max-width: 500px;
     height: 100px;
-    background-color: white;
     transition: all 250ms ease;
+    background-color: rgba(255,255,255,.6);
     display: flex;
     justify-content: center; /* Centers content horizontally */
     align-items: center; /* Centers content vertically */
-    font-weight: 900;
+    font-weight: bolder;
+    font-size: xx-large;
     min-width: 150px;
+
+}
+
+button.box{
+    background-color: white;
+    color: purple;
 }
 
 .box:active {
@@ -54,9 +69,10 @@ form {
 
 .box span {
     position: absolute;
-    font-size: large;
+    font-size: xx-large;
+    font-weight: bolder;
     transition: all 30ms ease;
-    color: teal;
+    color: purple;
     display: flex;
     justify-content: center;
     align-items: center;
