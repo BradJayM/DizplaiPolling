@@ -5,6 +5,7 @@ let pollChoice = "1";
 window.onload = async () => {
     await getPoll(getPollUrl+pollChoice)
 
+
     document.getElementById("submitVote").addEventListener("click", async (e) => {
         e.preventDefault()
         
@@ -55,17 +56,13 @@ async function getPoll(url){
         let pollOptions = [];
 
         pollQuestion = data.poll.question;
-        pollOptions.push(data.poll.options[0].optionText);
-        pollOptions.push(data.poll.options[1].optionText);
-        pollOptions.push(data.poll.options[2].optionText);
-        //console.log(pollQuestion);
-        //console.log(pollOptions);
-
         document.getElementById("pollQuestion").innerHTML = pollQuestion;
-        document.getElementById("option1Label").innerHTML = pollOptions[0];
-        document.getElementById("option2Label").innerHTML = pollOptions[1];
-        document.getElementById("option3Label").innerHTML = pollOptions[2];
 
+        for(i in data.poll.options){
+            pollOptions.push(data.poll.options[i].optionText);
+            document.getElementById("option"+i+"Label").innerHTML = pollOptions[i];
+        }
+    
     } catch(error){
         console.error("Error fetching results", error);
     }
