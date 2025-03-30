@@ -5,7 +5,6 @@ let pollChoice = "1";
 window.onload = async () => {
     await getPoll(getPollUrl+pollChoice)
 
-
     document.getElementById("submitVote").addEventListener("click", async (e) => {
         e.preventDefault()
         
@@ -18,7 +17,9 @@ window.onload = async () => {
         const data = {
             "pollId" : "1",
             "optionId" : selectedOption.value
+
         };
+        alert(selectedOption.value);
         await sendVote(addVoteUrl, data);
         window.location.href = "results.html";
     });
@@ -53,16 +54,35 @@ async function getPoll(url){
         })
         const data = await response.json();
         let pollQuestions = null;
-        let pollOptions = [];
 
         pollQuestion = data.poll.question;
         document.getElementById("pollQuestion").innerHTML = pollQuestion;
 
-        for(i in data.poll.options){
-            pollOptions.push(data.poll.options[i].optionText);
-            document.getElementById("option"+i+"Label").innerHTML = pollOptions[i];
-        }
-    
+        data.poll.options.forEach((option, index) => {
+
+            let label = document.createElement("label");
+
+            let input = document.createElement("input");
+            input.type = "radio";
+            input.name = "radioVote";
+            input.value = index+1;
+            input.id = 'option${index}';
+
+            let boxDiv = document.createElement("div");
+            boxDiv.classList.add("box");
+
+            let span = document.createElement("span");
+            span.id = 'option${index}Label';
+            span.innerText = option.optionText;
+
+            boxDiv.appendChild(span);
+            label.appendChild(input);
+            label.appendChild(boxDiv);
+
+            document.getElementById("pollOptions").appendChild(label);
+        });
+        
+
     } catch(error){
         console.error("Error fetching results", error);
     }
