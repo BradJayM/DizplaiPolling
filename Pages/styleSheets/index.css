@@ -71,11 +71,13 @@ html{
 }
 
 .boxLeft {
-    flex: 5; /* Takes up 75% of the space */
+    flex: 5; 
 }
 
+
+
 .boxRight {
-    flex: 1; /* Takes up 25% of the space */
+    flex: 1; 
 }
 
 button.box{
