@@ -5,10 +5,10 @@ A small web application allowing the user to cast their vote and view the curren
 You will need to have NodeJS installed, this can be done here: https://nodejs.org/en/download
 
 # Setup
-1 - download and unzip the file from: "https://github.com/BradJayM/DizplaiPolling"
-2 - in the console, davigate to the directory "DizplaiPolling-main"
-3 - npm install express
-4 - cd server
-5 - node app.js
-6 - Navigate to and open the DisplaiPolling-main\pages\index.html
+* download and unzip the file from: "https://github.com/BradJayM/DizplaiPolling"
+*  in the console, Navigate to the directory "DizplaiPolling-main"
+*  pm install express
+*  cd server
+*  node app.js
+*  Navigate to and open the DisplaiPolling-main\pages\index.html
 
