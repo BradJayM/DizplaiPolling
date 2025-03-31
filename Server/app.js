@@ -18,7 +18,7 @@ let polls = [
             {optionId: 3, optionText: "Classical"},
             {optionId: 4, optionText: "Country"},
             {optionId: 5, optionText: "Just the radio"},
-            {optionId: 3, optionText: "A random assortment thanks to Sporify 'smart' shuffle"},
+            {optionId: 6, optionText: "A random assortment thanks to Spotify 'smart' shuffle"},
 
         ],
     },
