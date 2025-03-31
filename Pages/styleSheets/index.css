@@ -1,13 +1,11 @@
 :root{
-    --boxMaxWidth: 500px;
+    --boxMaxWidth: 700px;
     --boxHeight: 100px;
 }
 
 html{
-    height: auto;
     min-height: 100%;
-    background-color: grey;
-    background: no-repeat url("pollBackground.jpg");
+    background: grey no-repeat url("pollBackground.jpg");
     background-size: 100% 100%;
 }
 .top {
@@ -25,12 +23,10 @@ html{
 .bottom {
     display: flex;
     justify-content: center;
-    
+    align-items: center;
     padding-top: 15px;
 }
-form {
-    width: 100%;
-}
+
 .middle label{
     width: 100%;
     display: flex;
@@ -55,7 +51,7 @@ form {
     flex-direction: row;
     justify-content: center;
     align-items: center; /* Centers content vertically */
-    width: 90%;
+    flex-grow: 1;
     max-width: var(--boxMaxWidth);
     min-height: var(--boxHeight);
     border-radius: 15px;
@@ -75,7 +71,7 @@ form {
 }
 
 .boxLeft {
-    flex: 4; /* Takes up 75% of the space */
+    flex: 5; /* Takes up 75% of the space */
 }
 
 .boxRight {
@@ -85,7 +81,6 @@ form {
 button.box{
     background-color: white;
     color: purple;
-    text-overflow: hidden;
 }
 
 .box:active {
@@ -97,12 +92,10 @@ button.box{
     font-weight: bolder;
     transition: all 30ms ease;
     color: purple;
-    display: flex;
     justify-content: center;
     align-items: center;
-    border: solid orange;
     overflow: hidden;
     height: fit-content;
     padding: 10px;
-    max-width: 400px;
+    max-width: var(--boxMaxWidth);
 }

@@ -19,7 +19,6 @@ window.onload = async () => {
             "optionId" : selectedOption.value
 
         };
-        alert(selectedOption.value);
         await sendVote(addVoteUrl, data);
         window.location.href = "results.html";
     });
@@ -37,7 +36,6 @@ async function sendVote(url, data){
 
         const result = await response.json();
         console.log("success: ", result);
-        alert("Vote Good");
     } catch (error) {
         console.error("Error: ", error);
         alert("Error submitting vote.");

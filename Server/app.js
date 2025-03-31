@@ -11,18 +11,19 @@ let polls = [
     {
         pollId:1,
         pollName: "Example Poll",
-        question: "Example Poll",
+        question: "What is the best music genre for the office?",
         options: [
-            {optionId: 1, optionText: "Yes"},
-            {optionId: 2, optionText: "No"},
-            {optionId: 3, optionText: "Maybe"},
-            {optionId: 4, optionText: "Example Longer answer to test if the text wraps properly or if it breaches the box :) Apparently this should now show an ellipsis"},
+            {optionId: 1, optionText: "Pop"},
+            {optionId: 2, optionText: "Alternative Rock"},
+            {optionId: 3, optionText: "Classical"},
+            {optionId: 4, optionText: "Country"},
+            {optionId: 5, optionText: "Just the radio"},
+            {optionId: 3, optionText: "A random assortment thanks to Sporify 'smart' shuffle"},
 
         ],
     },
 ];
 
-//Store the polls using in-memory storage
 let votes = {}
 
 //Gets all polls
@@ -74,6 +75,6 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log('Example app listening on port ${port}');
+    console.log(`Server listening on port ${port}`);
 });
 
