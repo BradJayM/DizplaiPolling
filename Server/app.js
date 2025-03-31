@@ -10,12 +10,14 @@ app.use(express.json());
 let polls = [
     {
         pollId:1,
-        pollName: "Best Coding Language",
-        question: "What is the best coding language?",
+        pollName: "Example Poll",
+        question: "Example Poll",
         options: [
-            {optionId: 1, optionText: "Java"},
-            {optionId: 2, optionText: "C++"},
-            {optionId: 3, optionText: "MIPS"},
+            {optionId: 1, optionText: "Yes"},
+            {optionId: 2, optionText: "No"},
+            {optionId: 3, optionText: "Maybe"},
+            {optionId: 4, optionText: "Example Longer answer to test if the text wraps properly or if it breaches the box :) Apparently this should now show an ellipsis"},
+
         ],
     },
 ];
