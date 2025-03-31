@@ -2,11 +2,11 @@ const express = require('express'); //Imports Express
 const app = express();  //Initialised instance of express applciation
 const port = 3000;
 const cors = require("cors");
-app.use(cors());
+app.use(cors()); //Allows requests to come from other directories.
 
 app.use(express.json());
 
-//Store the polls using in-memory storage
+//Store the polls using in-memory storage this is not persistent between server uptime.
 let polls = [
     {
         pollId:1,
@@ -31,11 +31,11 @@ app.get("/polls", (req, res) => {
     res.json(polls);
 });
 
+//Gets a poll based on pollID
 app.get("/polls/:pollId", (req, res) => {
-    //const pollId = req.params.pollId;
-    const pollId = 1;
-    const poll = polls.find((p) => p.pollId == pollId);
-    if(!poll) return res.status(404).json({error: "poll not found"});
+    const pollId = req.params.pollId;
+    const poll = polls.find((p) => p.pollId == pollId); //find the poll[p] where pollID is equal to the pollID within the request
+    if(!poll) return res.status(404).json({error: "poll not found"}); //pollID doesnt exist :/
 
     res.json({poll});
 })
@@ -49,8 +49,8 @@ app.post("/vote", (req, res) => {
     const option = poll.options.find((o) => o.optionId == optionId);
     if (!option) return res.status(400).json({error: "invalid option"});
 
-    if(!votes[pollId]) votes[pollId] = {};
-    votes[pollId][optionId] = (votes[pollId][optionId] || 0) + 1;
+    if(!votes[pollId]) votes[pollId] = {}; //If the votes array doesnt contain any results for this poll, add the data for it.
+    votes[pollId][optionId] = (votes[pollId][optionId] || 0) + 1; //Add the vote in.
 
     res.json({message: "Vote submitted succsessfully"});
 });
@@ -61,7 +61,7 @@ app.get("/vote/:pollId", (req, res) => {
     if (!votes[pollId]) return res.json({pollId, results: []});
 
     const poll = polls.find((p) => p.pollId == pollId);
-    const results = poll.options.map((option) => ({
+    const results = poll.options.map((option) => ({ //maps the response to variables within the votes array.
         optionId: option.optionId,
         optionText: option.optionText,
         votes: votes[pollId][option.optionId] || 0,

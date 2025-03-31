@@ -17,7 +17,7 @@ html{
     min-height: 300px;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers items horizontally */
+    align-items: center; 
     gap: 15px;
 }
 .bottom {
@@ -35,7 +35,7 @@ html{
 }
 
 .middle input[type="radio"] {
-    display: none; /* REMOVES THE LITTLE CHECK BOX */
+    display: none; /* REMOVES THE RADIO BUTTON BOX THINGY*/
 }
 
 .middle input[type="radio"]:checked + .box {
@@ -47,10 +47,10 @@ html{
 }
 
 .box {
-    display: flex;  /* Makes the box a flex container */
+    display: flex; 
     flex-direction: row;
     justify-content: center;
-    align-items: center; /* Centers content vertically */
+    align-items: center;
     flex-grow: 1;
     max-width: var(--boxMaxWidth);
     min-height: var(--boxHeight);
@@ -64,10 +64,10 @@ html{
 }
 
 .boxLeft, .boxRight {
-    display: flex;  /* Make sure child containers also use flex */
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-grow: 1; /* Ensure they take up space */
+    flex-grow: 1;
 }
 
 .boxLeft {

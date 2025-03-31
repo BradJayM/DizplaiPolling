@@ -1,5 +1,5 @@
 let getResultsUrl = "http://localhost:3000/vote/"
-let pollChoice = "1";
+let pollChoice = "1"; //NEED TO ADD A PAGE WHERE USER CAN SELECT WHICH POLL TO PARTAKE IN
 
 window.onload = async (e) => {
     await getResults(getResultsUrl+pollChoice);
