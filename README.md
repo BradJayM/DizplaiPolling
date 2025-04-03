@@ -7,7 +7,7 @@ You will need to have NodeJS installed, this can be done here: https://nodejs.or
 # Setup
 * download and unzip the file from: "https://github.com/BradJayM/DizplaiPolling"
 *  in the console, Navigate to the directory "DizplaiPolling-main"
-*  pm install express
+*  npm install express
 *  cd server
 *  node app.js
 *  Navigate to and open the DisplaiPolling-main\pages\index.html
